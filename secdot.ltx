@@ -1,24 +1,20 @@
-\documentclass[pagesize=auto, fontsize=12pt, DIV=10, parskip=half]{scrartcl}
+% !TeX TXS-program:compile = txs:///lualatex-dev
+\DocumentMetadata
+  {
+    pdfstandard={ua-2,a-4f},
+    tagging=on
+  }
+\documentclass[12pt]{l3in2edoc}
 
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
 \usepackage[svgnames]{xcolor}
 \usepackage{listings}
 \usepackage{microtype}
 \usepackage{hyperref}
+\usepackage{parskip}
 
 \newcommand*{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
-\newcommand*{\pkg}[1]{\textsf{#1}}
-\newcommand*{\cls}[1]{\textsf{#1}}
-\newcommand*{\cs}[1]{\texttt{\textbackslash#1}}
-\makeatletter
-\newcommand*{\cmd}[1]{\cs{\expandafter\@gobble\string#1}}
-\makeatother
-\newcommand*{\meta}[1]{\textlangle\textsl{#1}\textrangle}
-\newcommand*{\marg}[1]{\texttt{\{}\meta{#1}\texttt{\}}}
-
-\addtokomafont{title}{\rmfamily}
+\renewcommand*{\meta}[1]{\textlangle\textsl{#1}\textrangle}
+\renewcommand*{\marg}[1]{\texttt{\{}\meta{#1}\texttt{\}}}
 
 \lstset{%
   language=[LaTeX]TeX,%
@@ -33,12 +29,14 @@
   escapechar=\$%
 }
 
-\title{The \pkg{secdot} package\thanks{This manual corresponds to \pkg{secdot.sty}~v1.2, dated~May 16 2026.}}
-\subtitle{Define section numbers with dots}
+\title{\bfseries\LARGE
+  The \pkg{secdot} package\thanks{This manual corresponds to \pkg{secdot.sty}~v1.2a, dated~October 1, 2026.}\\[1ex]
+  \normalsize Define section numbers with dots
+}
 \author{%
   Robin Fairbairns\and
-  \and Steve Grathwohl\and
-  \LaTeX\ Team\thanks{\url{https://github.com/rf-latex}}
+  Steve Grathwohl\and
+  \LaTeX\ Team\thanks{\url{https://github.com/LaTeX-Package-Repositories/secdot}}
 }
 \date{May 16 2026}
 
@@ -62,7 +60,7 @@ control.  examples of use would be
 %
 \begin{lstlisting}
 \sectionpunct{section}{. } % \sectiondot places a \quad after the
-                              % dot, which may look excessive
+                               % dot, which may look excessive
 \sectionpunct{section}{\quad} % restores default latex behaviour
 \end{lstlisting}
 
@@ -73,7 +71,7 @@ stronger stomachs, by defining the appropriate
 \csname @seccntfmt@$\meta{level}$\endcsname
 \end{lstlisting}
 %
-which macro will take one argument, when invoked: the `\meta{level}' name.
+macro which will take one argument, when invoked: the `\meta{level}' name.
 
 If \verb|\DocumentMetadata| is used, section headings are
 implemented via \LaTeX\ templates which offer much more flexible
